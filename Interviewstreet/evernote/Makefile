@@ -1,4 +1,4 @@
-SRC=even_tree.cpp
+SRC=multiple.cpp
 
 all:	$(SRC) in
 	g++ $(SRC) 
