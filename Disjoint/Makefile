@@ -1,4 +1,4 @@
-SRC=kruskal.cpp
+SRC=disjoint_set.cpp
 
 all:	$(SRC)
 	g++ $(SRC) 
