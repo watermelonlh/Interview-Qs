@@ -1,4 +1,4 @@
-SRC=abs_sorted_sum.cpp
+SRC=increasing_subseq_nlogn.cpp
 
 all:	$(SRC)
 	g++ $(SRC) 
