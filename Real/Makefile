@@ -1,4 +1,4 @@
-SRC=abs_sorted_sum.cpp
+SRC=zig_zag.cpp
 
 all:	$(SRC)
 	g++ $(SRC) 

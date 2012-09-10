@@ -1,5 +1,5 @@
-SRC=findKthSmallest.cpp
+SRC=generate_parentheses.cpp
 
 all:	$(SRC)
-	g++ $(SRC) 
+	g++ $(SRC) -Wall  
 	./a.out < in
