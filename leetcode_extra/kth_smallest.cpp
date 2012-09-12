@@ -14,11 +14,12 @@ int theKth()
 	{
 		int i = double(AR - AL) / (AR - AL + BR - BL) * (K - 1);
 		int j = K - 1 - i;
-		i += AL, j += BL;
-		int Ai = (i == N) ? INT_MAX : A[i];
-		int Ai_1 = (i > 0) ? A[i - 1] : INT_MIN;
-		int Bj = (j == M) ? INT_MAX : B[j];
-		int Bj_1 = (j > 0) ? B[j - 1] : INT_MIN;
+		int Ai = (i + AL == N) ? INT_MAX : A[AL + i];
+		int Ai_1 = (AL + i > 0) ? A[AL + i - 1] : INT_MIN;
+		int Bj = (j + BL == M) ? INT_MAX : B[BL + j];
+		int Bj_1 = (BL + j > 0) ? B[BL + j - 1] : INT_MIN;
+		cout << i << ' ' << j << endl;
+		cout << Ai_1 << ' ' << Ai << ' ' << Bj_1 << ' ' << Bj << endl;
 		if (Bj_1 < Ai && Ai < Bj)
 		{
 			return Ai;
@@ -26,14 +27,13 @@ int theKth()
 		{
 			return Bj;
 		}
-		cout << Ai_1 << ' ' << Ai << ' ' << Bj_1 << ' ' << Bj << endl;
 		if (Ai < Bj_1) 
 		{
-			AL = i + 1;
+			AL += i + 1;
 			K -= i + 1;
 		} else
 		{
-			BL = j + 1;
+			BL += j + 1;
 			K -= j + 1;
 		}
 		cout << AL << ' ' << AR << ' ' << BL << ' ' << BR << ' ' << K << endl;

@@ -1,4 +1,4 @@
-SRC=generate_parentheses.cpp
+SRC=kth_smallest.cpp
 
 all:	$(SRC)
 	g++ $(SRC) -Wall  
