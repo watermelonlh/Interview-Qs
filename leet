@@ -1,0 +1,13 @@
+* rotate an array without extra space
+* search in rotate array
+    可以不找分界点
+* 判断一棵树是不是BST
+    不能只判断他的左右孩子，应该要考虑整个左子树的最大值小于rootvalue，
+    右子树最大值大于rootValue
+* spiral 递归
+* 打印树的边点
+    如果是完全树就是 左链 + 右链 + all leaf
+    如果不是就需要考虑左边的节点没有左节点的情况了！
+* 树的前中后序的非递归
+
+    

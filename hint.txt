@@ -1,0 +1,35 @@
+Data Structure
+Array
+LinkList
+Stack
+Queue
+Heap
+Binary Search Tree
+Interval Tree
+并查集
+图
+	最短路
+	关节点
+
+	有向图
+		拓扑序
+	无向图
+		最小生成树
+String
+	ext-KMP
+	最长回文串
+
+
+Algorithm
+贪心
+DFS/BFS  初始状态 开始扩展
+扫描  利用单调性
+二分
+递归
+动态规划
+	F[i]
+	F[i][j]  i阶段 j状态 
+	F[a][b]  a b区间
+
+
+正着想不通 反过来想
