@@ -9,10 +9,14 @@
  */
 class Solution {
 public:
-    int maxHeight(TreeNode *root) {
+    int minDepth(TreeNode *root) {
         // Start typing your C/C++ solution below
         // DO NOT write int main() function
-        if (!root) return 0;
-        return max(maxHeight(root->left), maxHeight(root->right)) + 1;
+        if (root == NULL) return 0;
+        int l = minDepth(root->left);
+        int r = minDepth(root->right);
+        if (l == 0) return r + 1;
+        if (r == 0) return l + 1;
+        return min(l, r) + 1;
     }
 };
