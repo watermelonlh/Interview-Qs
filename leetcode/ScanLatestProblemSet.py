@@ -14,6 +14,9 @@ class bcolors:
     GREEN = '\033[92m'
     YELLOW = '\033[93m'
     PINK = '\033[91m'
+    GREY = '\033[90m'
+    LIGHTBLUE = '\033[96m'
+    WHITE = '\033[97m'
     ENDC = '\033[0m'
 
     @staticmethod
@@ -44,8 +47,8 @@ else:
     problems = latestProblemFile.read().splitlines()
     latestProblemFile.close()
 
-bcolors.printmsg("Problem Amount = " + str(len(problems)), bcolors.PINK)
-bcolors.printmsg("Updated on " + updateDate.strftime("%Y-%m-%d %H:%M:%S"), bcolors.PINK)
+bcolors.printmsg("Problem Amount = " + str(len(problems)), bcolors.BLUE)
+bcolors.printmsg("Updated on " + updateDate.strftime("%Y-%m-%d %H:%M:%S"), bcolors.BLUE)
 count = 0
 for problem in problems:
 #    print(problem)
@@ -62,7 +65,7 @@ bcolors.printmsg(str(count) + " problems not solved ", bcolors.GREEN)
 for problem in problems:
     filename = problem.replace(' ', '.') + ".cpp"
     if not os.path.exists(filename):
-        bcolors.printmsg("\t" + problem, bcolors.BLUE)
+        bcolors.printmsg("\t" + problem, bcolors.LIGHTBLUE)
     else:
         solvedProblems.remove(filename)
 
