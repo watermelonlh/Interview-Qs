@@ -3,6 +3,42 @@ public:
     int largestRectangleArea(vector<int> &height) {
         // Start typing your C/C++ solution below
         // DO NOT write int main() function
+        stack<int> heights, indexes;
+        int N = height.size();
+        int ans = 0;
+        for (int i = 0; i < N; i++)
+        {
+            int lastIndex = i;
+            while (!heights.empty() && height[i] <= heights.top())
+            {
+                int sum = heights.top() * (i - indexes.top());    
+                ans = max(sum, ans);
+                lastIndex = indexes.top();
+                indexes.pop();
+                heights.pop();
+                
+            }
+            heights.push(height[i]);
+            indexes.push(lastIndex);
+        }
+        while (!heights.empty())
+        {
+            int sum = heights.top() * (N - indexes.top());
+            ans = max(ans, sum);
+            indexes.pop();
+            heights.pop();
+        }
+        return ans;
+    }
+};
+
+
+
+class Solution {
+public:
+    int largestRectangleArea(vector<int> &height) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
         int n = height.size();
         if (n == 0) return 0;
         vector<int> left(n, 0), right(n, 0);
