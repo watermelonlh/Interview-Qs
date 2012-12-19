@@ -2,7 +2,7 @@ class Solution {
 public:
     bool match(char a, char b)
     {
-        return a == b || b == '*' || b == '?';
+        return a == b || b == '?';
     }
     bool isMatch(const char *s, const char *p) {
         // Start typing your C/C++ solution below
