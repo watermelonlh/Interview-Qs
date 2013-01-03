@@ -1,31 +1,30 @@
 class Solution {
 public:
-    void rotate(vector<int> &num, int l, int r)
-    {
-        int mid = (r - l + 1) / 2;
-        for (int i = 0; i < mid; i++)
-        {
-            swap(num[l + i], num[r - i]);
-        }
-    }
     void nextPermutation(vector<int> &num) {
         // Start typing your C/C++ solution below
         // DO NOT write int main() function
-        int n = num.size();
-        int right = n - 1;
-        for (int i = n - 2; i >= 0; i--)
+        int N = num.size();
+        for (int i = N - 1; i >= 0; i--)
         {
-            if (num[right] > num[i])
+            if (!i || num[i - 1] < num[i])
             {
-                for (int k = n - 1; k > i; k--)
-                    if (num[k] > num[i])
+                if (i > 0)
+                {
+                    for (int j = N - 1; j >= i; j--)
                     {
-                        swap(num[k], num[i]);
-                        rotate(num, i + 1, n - 1);
-                        return;
+                        if (num[j] > num[i - 1])
+                        {
+                            swap(num[j], num[i - 1]);
+                            break;
+                        }
                     }
-            } else right = i;
+                }
+                for (int l = i, r = N - 1; l < r; l++, r--)
+                {
+                    swap(num[l], num[r]);
+                }
+                break;
+            }
         }
-        rotate(num, 0, n - 1);
     }
 };
