@@ -33,10 +33,12 @@ if len(sys.argv) > 1 and sys.argv[1] == '-fresh':
     parser = HTMLParser.HTMLParser()
     web = parser.unescape(web)
     problems = re.findall("setJudge\([0-9]+, \"([a-zA-Z0-9\(\),\'\- ]+)\"\)", web)
+    problems = sorted(problems)
 
     latestProblemFile = open("Latest Problem Set.txt", "w+")
     latestProblemFile.write(updateDate.strftime("%Y-%m-%d %H:%M:%S") + os.linesep)
     for problem in problems:
+        print problem
         latestProblemFile.write(problem + os.linesep)
     latestProblemFile.close()
 
