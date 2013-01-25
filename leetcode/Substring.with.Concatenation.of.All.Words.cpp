@@ -5,49 +5,41 @@ public:
         // DO NOT write int main() function
         int N = L.size();
         vector<int> ans;
-        if (L.size() == 0) return ans;
+        if (N == 0) return ans;
         int len = L[0].size();
-        int ls = S.size();
-        if (len * N > ls) return ans;
-        vector<bool> mark(ls, false);
-        map<string, int> dict, ocur;
-        for (int i = 0; i < N; i++)
-            dict[L[i]]++;
-        for (int i = 0; i < len && i + N * len <= ls; i++)
+        int lenS = S.size();
+        map<string, int> countL;
+        for (int i = 0; i < N; i++) countL[L[i]]++;
+        for (int i = 0; i < len && i + len * N <= lenS; i++)
         {
-            int j = i;
-            int tot = 0;
-            for (int k = 0; k < N; k++, j += len)
+            int l = i, r = i;
+            int matched = 0;
+            for (int k = 0; k < N; k++, r += len)
             {
-                string sub = S.substr(j, len);
-                if (dict[sub] >= 1) 
-                {
-                    ocur[sub]++;
-                    if (ocur[sub] <= dict[sub]) tot++;
-                }
+                string sub = S.substr(r, len);
+                countL[sub]--;
+                if (countL[sub] >= 0) matched++;
             }
-            for (int k = i; k < ls; j += len, k += len)
+            if (matched == N) ans.push_back(i);
+            while (r + len <= lenS)
             {
-                if (tot == N) mark[k] = true;
-                string sub = S.substr(k, len);
-                if (dict[sub] >= 1) 
-                {
-                    ocur[sub]--;
-                    if (ocur[sub] < dict[sub]) tot--;
-                }
-                if (j + len <= ls) 
-                {
-                    sub = S.substr(j, len);
-                    if (dict[sub] >= 1)
-                    {
-                        ocur[sub]++;
-                        if (ocur[sub] <= dict[sub]) tot++;
-                    }
-                }
+                string sub = S.substr(l, len);
+                countL[sub]++;
+                if (countL[sub] > 0) matched--;
+                sub = S.substr(r, len);
+                countL[sub]--;
+                if (countL[sub] >= 0) matched++;
+                l += len, r += len;
+                if (matched == N) ans.push_back(l);
+            }
+            while (l <= r)
+            {
+                string sub = S.substr(l, len);
+                countL[sub]++;
+                if (countL[sub] > 0) matched--;
+                l += len;
             }
         }
-        for (int i = 0; i < ls; i++) 
-            if (mark[i]) ans.push_back(i);
         return ans;
     }
 };
