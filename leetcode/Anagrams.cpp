@@ -1,5 +1,29 @@
 class Solution {
 public:
+    vector<string> anagrams(vector<string> &strs) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        unordered_map<string, int> dict;
+        vector<string> ans;
+        int N = strs.size();
+        for (int i = 0; i < N; i++)
+        {
+            string s = strs[i];
+            sort(s.begin(), s.end());
+            dict[s]++;
+        }
+        for (int i = 0; i < N; i++)
+        {
+            string s = strs[i];
+            sort(s.begin(), s.end());
+            if (dict[s] > 1) ans.push_back(strs[i]);
+        }
+        return ans;
+    }
+};
+
+class Solution {
+public:
     static bool cmp(pair<string, string> a, pair<string, string> b)
     {
         return a.first < b.first;
