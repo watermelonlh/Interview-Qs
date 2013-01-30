@@ -1,3 +1,34 @@
+// use unordered map, scan only once
+class Solution {
+public:
+    vector<string> anagrams(vector<string> &strs) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        unordered_map<string, int> dict;
+        vector<string> ans;
+        int N = strs.size();
+        for (int i = 0; i < N; i++)
+        {
+            string s = strs[i];
+            sort(s.begin(), s.end());
+            if (dict[s] == -1) 
+            {
+                ans.push_back(strs[i]);
+            } else if (dict[s] > 0)
+            {
+                ans.push_back(strs[dict[s] - 1]);
+                ans.push_back(strs[i]);
+                dict[s] = -1;
+            } else 
+            {
+                dict[s] = i + 1;
+            }
+        }
+        return ans;
+    }
+};
+
+// only use unordered map, scan 2 times
 class Solution {
 public:
     vector<string> anagrams(vector<string> &strs) {
@@ -22,6 +53,7 @@ public:
     }
 };
 
+// not use map
 class Solution {
 public:
     static bool cmp(pair<string, string> a, pair<string, string> b)
