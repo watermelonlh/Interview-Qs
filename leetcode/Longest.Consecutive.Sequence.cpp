@@ -22,14 +22,17 @@ public:
         int ans = 0;
         for (int i = 0; i < N; i++)
         {
-            int now = i;
-            int step = 0;
-            while (now >= 0)
+            if (head[i])
             {
-                step++;
-                now = next[now];
+                int now = i;
+                int step = 0;
+                while (now >= 0)
+                {
+                    step++;
+                    now = next[now];
+                }
+                ans = max(ans, step);
             }
-            ans = max(ans, step);
         }
         return ans;
     }
