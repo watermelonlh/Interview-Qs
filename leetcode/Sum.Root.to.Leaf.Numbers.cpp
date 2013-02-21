@@ -9,23 +9,19 @@
  */
 class Solution {
 public:
-    void pathToLeaf(TreeNode *root, int num, int &sum)
+    int pathToLeaf(TreeNode *root, int num)
     {
-        if (!root) return;
+        if (!root) return 0;
         num = num * 10 + root->val;
         if (!root->left && !root->right)
         {
-            sum += num;
-            return;
+            return num;
         }
-        pathToLeaf(root->left, num, sum);
-        pathToLeaf(root->right, num, sum);
+        return pathToLeaf(root->left, num) + pathToLeaf(root->right, num);
     }
     int sumNumbers(TreeNode *root) {
         // Start typing your C/C++ solution below
         // DO NOT write int main() function
-        int ans = 0;
-        pathToLeaf(root, 0, ans);
-        return ans;
+        return pathToLeaf(root, 0);
     }
 };
