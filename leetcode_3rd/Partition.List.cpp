@@ -11,41 +11,41 @@ public:
     ListNode *partition(ListNode *head, int x) {
         // Start typing your C/C++ solution below
         // DO NOT write int main() function
-        ListNode *h1 = NULL, *t1 = NULL, *h2 = NULL, *t2 = NULL;
+        ListNode *headLess = NULL, *tailLess = NULL, *headNotLess = NULL, *tailNotLess = NULL;
         ListNode *now = head;
         while (now)
         {
             if (now->val < x)
             {
-                if (!h1)
+                if (!headLess)
                 {
-                    h1 = t1 = now;
+                    headLess = tailLess = now;
                 } else
                 {
-                    t1->next = now;
-                    t1 = now;
+                    tailLess->next = now;
+                    tailLess = now;
                 }
             } else
             {
-                if (!h2)
+                if (!headNotLess)
                 {
-                    h2 = t2 = now;
+                    headNotLess = tailNotLess = now;
                 } else
                 {
-                    t2->next = now;
-                    t2 = now;
+                    tailNotLess->next = now;
+                    tailNotLess = now;
                 }
             }
             now = now->next;
         }
-        if (!h2) 
-            return h1;
-        else if (!h1) 
-            return h2;
+        if (!headNotLess) 
+            return headLess;
+        else if (!headLess) 
+            return headNotLess;
         else {
-            t1->next = h2;
-            t2->next = NULL;
-            return h1;
+            tailLess->next = headNotLess;
+            tailNotLess->next = NULL;
+            return headLess;
         }
     }
 };
