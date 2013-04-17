@@ -5,24 +5,25 @@ public:
         // DO NOT write int main() function
         int sign = 1;
         if (dividend < 0 ^ divisor < 0) sign = -1;
-        long long a = dividend;
-        long long b = divisor;
-        a = abs(a);
-        b = abs(b);
+        long long d1 = dividend;
+        long long d2 = divisor;
+        d1 = abs(d1);
+        d2 = abs(d2);
         long long p = 1;
-        while (a >= b)
+        while (d1 >= d2)
         {
-            p = p * 2;
-            b = b * 2;
+            p = p << 1;
+            d2 = d2 << 1;
         }
-        int ans = 0;
-        while (p)
+        
+        long long ans = 0;
+        while (p > 1)
         {
-            b /= 2;
-            p /= 2;
-            if (a >= b)
+            p = p >> 1;
+            d2 = d2 >> 1;
+            if (d1 >= d2)
             {
-                a -= b;
+                d1 -= d2;
                 ans += p;
             }
         }

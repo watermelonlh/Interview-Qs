@@ -11,10 +11,7 @@ public:
         {
             if (i == N || prices[i] < prices[i - 1])
             {
-                if (i > minIndex + 1)
-                {
-                    ans += prices[i - 1] - prices[minIndex];
-                }
+                ans += prices[i - 1] - prices[minIndex];
                 minIndex = i;
             }
         }
